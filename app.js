@@ -35,6 +35,7 @@ const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
 
+const contractController=require('./controllers/contract')
 /**
  * API keys and Passport configuration.
  */
@@ -132,6 +133,13 @@ app.post('/account/profile', passportConfig.isAuthenticated, userController.post
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
+
+/**
+* My routes
+*/
+app.get('/contract', contractController.getContract);
+app.post('/contract', contractController.postContract);
+
 
 /**
  * API examples routes.
